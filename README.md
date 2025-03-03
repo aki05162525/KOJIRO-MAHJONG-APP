@@ -1,7 +1,5 @@
 # kojiro-mahjong-app
 
-![Vercel Deploy](https://deploy-badge.vercel.app/vercel/tagbangers-co-jp?style=for-the-badge)
-
 ## Requirements
 
 - Bun

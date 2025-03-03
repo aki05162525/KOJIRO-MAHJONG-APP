@@ -1,10 +1,16 @@
+import { Button } from "@chakra-ui/react";
 import { css } from "../../styled-system/css";
-import { Heading } from "@chakra-ui/react";
 
 export default function Home() {
-  return (
-    <div className={css({ fontSize: "100xl", fontWeight: "bold" })}>
-      Hello 🐼!
-    </div>
-  );
+	return (
+		<div
+			className={css({
+				fontSize: "2xl",
+				fontWeight: "bold",
+			})}
+		>
+			Hello 🐼!
+			<Button>ボタン</Button>
+		</div>
+	);
 }

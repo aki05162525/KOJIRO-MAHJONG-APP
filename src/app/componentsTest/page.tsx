@@ -1,4 +1,4 @@
-import MatchCard from "@/components/match/MatchCard";
+import MatchCard from "@/components/MatchCard";
 
 export default function componentsTest() {
 	return (
@@ -12,10 +12,7 @@ export default function componentsTest() {
 			<MatchCard
 				ruleName="初期卓A"
 				buttonLabel="記録"
-				eastPlayer="りゅうと"
-				southPlayer="なるみ"
-				westPlayer="りゅうじろう"
-				northPlayer="あきひろ"
+				players={["りゅうと", "なるみ", "りゅうじろう", "あきひろ"]}
 			/>
 		</main>
 	);

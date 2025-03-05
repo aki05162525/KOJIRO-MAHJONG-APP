@@ -1,4 +1,3 @@
-import { cva } from "../../../styled-system/css/cva.mjs";
 import { matchCardRecipe, textStyle } from "./styles";
 
 type MatchCardProps = {

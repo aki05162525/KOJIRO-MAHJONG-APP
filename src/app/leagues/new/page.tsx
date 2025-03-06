@@ -103,7 +103,7 @@ export default function NewLeague() {
               <Text>{player.name}</Text>
               <Button
                 onClick={() => remove(index)} // 削除機能を追加
-                size="sm"
+                size="sm" // todo　削除のCSSの修正、編集機能
               >
                 <Trash2 />
               </Button>

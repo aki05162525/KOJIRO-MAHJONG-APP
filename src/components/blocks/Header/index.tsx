@@ -1,5 +1,5 @@
 import Image from "next/image";
-import localImage from "../../../../public/logo.jpeg";
+import localImage from "../../../../public/logo.png";
 import { headerStyles, ImageSize, titleStyle } from "./styles";
 
 export const Header = () => {

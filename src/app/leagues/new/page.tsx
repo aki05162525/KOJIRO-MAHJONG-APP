@@ -6,11 +6,9 @@ import {
   Flex,
   Heading,
   Input,
-  Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { Field } from "@/components/ui/field";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
@@ -28,14 +26,7 @@ export default function NewLeague() {
   const [newPlayerName, setNewPlayerName] = useState("");
 
   // react-hook-formの設定
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-    setValue,
-    getValues,
-  } = useForm<LeagueFormValues>({
+  const { register, handleSubmit, control } = useForm<LeagueFormValues>({
     defaultValues: {
       leagueName: "",
       players: [],
@@ -47,6 +38,7 @@ export default function NewLeague() {
     name: "players",
   });
 
+  //プレイヤー追加
   const addPlayer = () => {
     if (newPlayerName.trim() === "") return; // 空白なら追加しない
 
@@ -58,62 +50,79 @@ export default function NewLeague() {
     setNewPlayerName(""); // 入力欄をリセット
   };
 
+  //データ送信
+  const onSubmit = handleSubmit((data) => {
+    const newLeague = {
+      id: Date.now().toString(),
+      name: data.leagueName,
+      players: data.players,
+    };
+
+    console.log("データ:", newLeague); //確認
+
+    const storedLeagues = localStorage.getItem("leagues");
+    const leagues = storedLeagues ? JSON.parse(storedLeagues) : [];
+    localStorage.setItem("leagues", JSON.stringify([...leagues, newLeague]));
+  });
+
   return (
     <Box maxW="2xl" mx="auto" py={8} color="gray.900">
       <Heading size="3xl" fontWeight="bold" textAlign="center" mb={4}>
         リーグ登録
       </Heading>
+      <form onSubmit={onSubmit}>
+        {/* リーグ名入力 */}
+        <Box mb={8}>
+          <Input placeholder="リーグ名を入力" {...register("leagueName")} />
+        </Box>
 
-      {/* リーグ名入力 */}
-      <Box mb={8}>
-        <Input placeholder="リーグ名を入力" />
-      </Box>
+        {/* プレイヤー追加 */}
+        <Box mb={8}>
+          <Input
+            value={newPlayerName}
+            placeholder="プレイヤー名を入力"
+            onChange={(e) => setNewPlayerName(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                addPlayer();
+                setTimeout(() => setNewPlayerName(""), 0); // Enterを押したら入力欄が空白になるように設定
+              }
+            }}
+          />
+          <Button onClick={addPlayer} mt={2}>
+            <Plus />
+            追加
+          </Button>
+        </Box>
 
-      {/* プレイヤー追加 */}
-      <Box mb={8}>
-        <Input
-          value={newPlayerName}
-          placeholder="プレイヤー名を入力"
-          onChange={(e) => setNewPlayerName(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              addPlayer();
-              setTimeout(() => setNewPlayerName(""), 0); // Enterを押したら入力欄が空白になるように設定
-            }
-          }}
-        />
-        <Button onClick={addPlayer} mt={2}>
-          <Plus />
-          追加
-        </Button>
-      </Box>
+        {/* プレイヤーリスト */}
+        <VStack align="stretch">
+          {fields.map((player, index) => (
+            <Flex key={player.id} borderWidth={2}>
+              <Text>{player.name}</Text>
+              <Button
+                onClick={() => remove(index)} // 削除機能を追加
+                size="sm"
+              >
+                <Trash2 />
+              </Button>
+            </Flex>
+          ))}
+        </VStack>
 
-      {/* プレイヤーリスト */}
-      <VStack align="stretch">
-        {fields.map((player, index) => (
-          <Flex key={player.id} borderWidth={2}>
-            <Text>{player.name}</Text>
-            <Button
-              onClick={() => remove(index)} // 削除機能を追加
-              size="sm"
-            >
-              <Trash2 />
-            </Button>
-          </Flex>
-        ))}
-      </VStack>
+        {/* ボタン */}
+        <Flex justifyContent="space-between" pt={4}>
+          <Button variant="outline">
+            <a href="../../">戻る</a>
+          </Button>
 
-      {/* ボタン */}
-      <Flex justifyContent="space-between" pt={4}>
-        <Button variant="outline">
-          <a href="../../">戻る</a>
-        </Button>
-
-        <Button>
-          <a href="../../">登録する</a>
-        </Button>
-      </Flex>
+          <Button type="submit">
+            {/* <a href="../../">登録する</a> */}
+            登録する
+          </Button>
+        </Flex>
+      </form>
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import { cva } from "../../../styled-system/css/cva.mjs";
+import { cva } from "../../../../styled-system/css/cva.mjs";
 
 export const matchCardRecipe = cva({
   variants: {

@@ -18,7 +18,13 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       <body className={layoutStyle}>
         <Provider>
           <Header />
-          {children}
+          <div
+            className={css({
+              padding: "6",
+            })}
+          >
+            {children}
+          </div>
         </Provider>
       </body>
     </html>

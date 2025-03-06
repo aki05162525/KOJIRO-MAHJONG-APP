@@ -7,11 +7,12 @@ import {
   Heading,
   Input,
   Stack,
+  Text,
   VStack,
 } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import { useFieldArray, useForm } from "react-hook-form";
-import { Plus } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 
 // フォームの型定義
@@ -58,7 +59,7 @@ export default function NewLeague() {
   };
 
   return (
-    <Box maxW="2xl" mx="auto" py={8}>
+    <Box maxW="2xl" mx="auto" py={8} color="gray.900">
       <Heading size="3xl" fontWeight="bold" textAlign="center" mb={4}>
         リーグ登録
       </Heading>
@@ -90,10 +91,16 @@ export default function NewLeague() {
 
       {/* プレイヤーリスト */}
       <VStack align="stretch">
-        {fields.map((player) => (
-          <Box key={player.id} borderWidth={2} p={2}>
-            {player.name}
-          </Box>
+        {fields.map((player, index) => (
+          <Flex key={player.id} borderWidth={2}>
+            <Text>{player.name}</Text>
+            <Button
+              onClick={() => remove(index)} // 削除機能を追加
+              size="sm"
+            >
+              <Trash2 />
+            </Button>
+          </Flex>
         ))}
       </VStack>
 
@@ -103,7 +110,7 @@ export default function NewLeague() {
           <a href="../../">戻る</a>
         </Button>
 
-        <Button colorScheme="blue">
+        <Button>
           <a href="../../">登録する</a>
         </Button>
       </Flex>

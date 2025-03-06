@@ -74,8 +74,9 @@ export default function NewLeague() {
           value={newPlayerName}
           placeholder="プレイヤー名を入力"
           onChange={(e) => setNewPlayerName(e.target.value)}
-          onInput={(e) => {
-            if (e.target.value.trim() !== "") {
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
               addPlayer();
             }
           }}
@@ -88,17 +89,18 @@ export default function NewLeague() {
 
       {/* プレイヤーリスト */}
       <VStack align="stretch">
-        <Box borderWidth={2} p={2}>
-          プレイヤー 1
-        </Box>
-        <Box borderWidth={2} p={2}>
-          プレイヤー 2
-        </Box>
+        {fields.map((player) => (
+          <Box key={player.id} borderWidth={2} p={2}>
+            {player.name}
+          </Box>
+        ))}
       </VStack>
 
       {/* ボタン */}
       <Flex justifyContent="space-between" pt={4}>
-        <Button variant="outline">戻る</Button>
+        <Button variant="outline">
+          <a href="../../">戻る</a>
+        </Button>
 
         <Button colorScheme="blue">
           <a href="../../">登録する</a>

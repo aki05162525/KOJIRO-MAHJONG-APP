@@ -26,35 +26,15 @@ const initialItems = [
   { id: 4, position: "北", player: "あきひろ", score: 250, point: 0 },
 ];
 
-//点数入力
-const ScoreInput = ({
-  value,
-  onChange,
-}: { value: number; onChange: (value: number) => void }) => {
-  return (
-    <NumberInputRoot maxW="100px">
-      <NumberInputField
-        value={Number.isNaN(value) ? 0 : value} // NaN の場合0
-        onChange={(e) => {
-          const newValue = Number(e.target.value);
-          onChange(Number.isNaN(newValue) ? 0 : newValue); //NaN の場合は 0
-        }}
-      />
-    </NumberInputRoot>
-  );
-};
-
 //テーブル
 export const ScoreTable = () => {
   const [scores, setScores] = useState(initialItems);
 
-  // 点数変更時の処理（ポイントを更新）
-  // ユーザーが点数を入力すると、`handleScoreChange` が呼ばれる
-  const handleScoreChange = (index: number, value: number) => {
-    const newScores = [...scores];
-    newScores[index].score = value;
-    newScores[index].point = (value - 250) / 10; // 仮の計算式
-    setScores(newScores);
+  // スコアを更新する関数
+  const handleScoreChange = (index: number, newValue: number) => {
+    const updatedScores = [...scores];
+    updatedScores[index].score = newValue;
+    setScores(updatedScores);
   };
 
   return (
@@ -74,16 +54,22 @@ export const ScoreTable = () => {
             <Table.Cell>{item.player}</Table.Cell>
             <Table.Cell>
               <div style={{ display: "flex", alignItems: "flex-end" }}>
-                <ScoreInput
-                  value={item.score}
-                  onChange={(value) => handleScoreChange(index, value)}
-                />
+                <NumberInputRoot
+                  maxW="100px"
+                  value={item.score.toString()}
+                  onValueChange={(e) =>
+                    handleScoreChange(index, Number(e.value))
+                  }
+                >
+                  <NumberInputField />
+                </NumberInputRoot>
                 <span>00点</span>
-                {/* 00点を横に表示 */}
               </div>
             </Table.Cell>
             {/* ポイント（小数1桁で表示） */}
-            <Table.Cell textAlign="end">{item.point.toFixed(1)}</Table.Cell>
+            <Table.Cell textAlign="end">
+              {((item.score - 250) / 10).toFixed(1)}
+            </Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>

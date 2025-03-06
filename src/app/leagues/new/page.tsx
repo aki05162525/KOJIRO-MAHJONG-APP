@@ -78,6 +78,7 @@ export default function NewLeague() {
             if (e.key === "Enter") {
               e.preventDefault();
               addPlayer();
+              setTimeout(() => setNewPlayerName(""), 0); // Enterを押したら入力欄が空白になるように設定
             }
           }}
         />

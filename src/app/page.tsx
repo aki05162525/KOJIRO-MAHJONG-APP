@@ -1,34 +1,31 @@
-import { Button } from "@chakra-ui/react";
-import { css, cva } from "../../styled-system/css";
+import { Button, Flex, Heading } from "@chakra-ui/react";
+import { Plus } from "lucide-react";
 
-//panda cssの練習
-const buttonRecipe = cva({
-	base: {
-		cursor: "pointer",
-		padding: "4",
-		fontSize: "12px",
-	},
-	variants: {
-		visual: {
-			solid: { bg: "red.500", color: "white" },
-			outline: { borderWidth: "1px", borderColor: "red.500" },
-		},
-		size: {
-			sm: { padding: "4", fontSize: "12px" },
-			lg: { padding: "8", fontSize: "20px" },
-		},
-	},
-	defaultVariants: { visual: "outline", size: "lg" },
-});
+//リーグの定義
+interface Player {
+  id: string;
+  name: string;
+}
+
+interface League {
+  id: string;
+  name: string;
+  players: Player[];
+}
+
 export default function Home() {
-	return (
-		<>
-			<div className={css({ fontSize: "2xl", fontWeight: "normal" })}>
-				Hello Panda!
-			</div>
-			<button className={buttonRecipe({ visual: "solid" })}>
-				Hello, Panda!
-			</button>
-		</>
-	);
+  return (
+    <Flex justify="space-between">
+      <Heading size="3xl" fontWeight="bold">
+        リーグ一覧
+      </Heading>
+      <Button asChild variant="surface" rounded="full">
+        <a href="./leagues/new">
+          {" "}
+          <Plus />
+          リーグ追加
+        </a>
+      </Button>
+    </Flex>
+  );
 }

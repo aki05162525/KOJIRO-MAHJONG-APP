@@ -118,8 +118,7 @@ export default function NewLeague() {
           </Button>
 
           <Button type="submit">
-            {/* <a href="../../">登録する</a> */}
-            登録する
+            <a href="../../">登録する</a>
           </Button>
         </Flex>
       </form>

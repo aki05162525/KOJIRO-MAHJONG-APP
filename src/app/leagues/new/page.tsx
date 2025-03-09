@@ -42,11 +42,20 @@ export default function NewLeague() {
 
   //プレイヤー追加
   const addPlayer = () => {
+    const trimmedName = newPlayerName.trim(); //スペース付きの入力防止
+
     if (newPlayerName.trim() === "") return; // 空白なら追加しない
+
+    //重複の名前は追加できない仕様
+    const nameChecker = fields.some((player) => player.name === trimmedName);
+    if (nameChecker) {
+      alert("同じ名前のプレイヤーは追加できません");
+      return;
+    }
 
     append({
       id: Date.now().toString(), // 一意なIDを生成
-      name: newPlayerName,
+      name: trimmedName,
     });
 
     setNewPlayerName(""); // 入力欄をリセット
@@ -104,7 +113,12 @@ export default function NewLeague() {
         {/* プレイヤーリスト */}
         <VStack align="stretch">
           {fields.map((player, index) => (
-            <Flex key={player.id} borderWidth={2}>
+            <Flex
+              key={player.id}
+              borderWidth={2}
+              align="center"
+              justify="space-between"
+            >
               <Text>{player.name}</Text>
               <Button
                 onClick={() => remove(index)} // 削除機能を追加

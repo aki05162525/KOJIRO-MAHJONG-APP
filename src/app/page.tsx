@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Link,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 

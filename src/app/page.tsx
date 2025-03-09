@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Flex, Heading } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -17,7 +17,7 @@ interface League {
 }
 
 export default function Home() {
-  const [leagues, setLeagues] = useState<League[]>([]);
+  const [leagues, setLeagues] = useState<League[]>([]); //リーグ一覧を管理
 
   // ローカルストレージからリーグデータを取得
   useEffect(() => {
@@ -30,17 +30,39 @@ export default function Home() {
   }, []);
 
   return (
-    <Flex justify="space-between">
-      <Heading size="3xl" fontWeight="bold">
-        リーグ一覧
-      </Heading>
-      <Button asChild variant="surface" rounded="full">
-        <a href="./leagues/new">
-          {" "}
-          <Plus />
-          リーグ追加
-        </a>
-      </Button>
-    </Flex>
+    <div>
+      <Flex justify="space-between">
+        <Heading size="3xl" fontWeight="bold">
+          リーグ一覧
+        </Heading>
+        <Button asChild variant="surface" rounded="full">
+          <a href="./leagues/new">
+            {" "}
+            <Plus />
+            リーグ追加
+          </a>
+        </Button>
+      </Flex>
+      {/* リーグリスト */}
+      <VStack align="stretch" pt={4}>
+        {leagues.length === 0 ? (
+          <Text color="gray.500">リーグがまだ登録されていません。</Text>
+        ) : (
+          leagues.map((league) => (
+            <Box
+              key={league.id}
+              borderWidth={2}
+              borderRadius="lg"
+              p={4}
+              borderColor="gray.300"
+            >
+              <Heading as="h2" size="md">
+                {league.name}
+              </Heading>
+            </Box>
+          ))
+        )}
+      </VStack>
+    </div>
   );
 }

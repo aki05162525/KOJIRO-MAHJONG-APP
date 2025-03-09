@@ -12,6 +12,7 @@ import {
 import { useFieldArray, useForm } from "react-hook-form";
 import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 // フォームの型定義
 interface LeagueFormValues {
@@ -23,6 +24,7 @@ interface LeagueFormValues {
 }
 
 export default function NewLeague() {
+  const router = useRouter();
   const [newPlayerName, setNewPlayerName] = useState("");
 
   // react-hook-formの設定
@@ -63,6 +65,9 @@ export default function NewLeague() {
     const storedLeagues = localStorage.getItem("leagues");
     const leagues = storedLeagues ? JSON.parse(storedLeagues) : [];
     localStorage.setItem("leagues", JSON.stringify([...leagues, newLeague]));
+
+    // 登録後にリーグ一覧ページへ移動
+    router.push("/");
   });
 
   return (
@@ -113,12 +118,13 @@ export default function NewLeague() {
 
         {/* ボタン */}
         <Flex justifyContent="space-between" pt={4}>
-          <Button variant="outline">
+          <Button variant="outline" onClick={() => router.push("/")}>
             <a href="../../">戻る</a>
           </Button>
 
           <Button type="submit">
-            <a href="../../">登録する</a>
+            {/* <a href="../../">登録する</a> */}
+            登録する
           </Button>
         </Flex>
       </form>

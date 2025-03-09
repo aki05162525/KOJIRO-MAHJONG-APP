@@ -1,6 +1,14 @@
 "use client";
 
-import { Box, Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Link,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -55,10 +63,14 @@ export default function Home() {
               borderRadius="lg"
               p={4}
               borderColor="gray.300"
+              mt={4}
             >
               <Heading as="h2" size="md">
                 {league.name}
               </Heading>
+              <Text color="gray.500" mt={1}>
+                詳細を表示
+              </Text>
             </Box>
           ))
         )}

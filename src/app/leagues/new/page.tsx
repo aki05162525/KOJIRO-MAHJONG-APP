@@ -8,7 +8,6 @@ import {
   Heading,
   Input,
   Text,
-  VStack,
 } from "@chakra-ui/react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Plus, Trash2 } from "lucide-react";

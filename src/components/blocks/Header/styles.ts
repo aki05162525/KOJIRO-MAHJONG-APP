@@ -6,6 +6,7 @@ export const headerStyles = css({
   backgroundColor: "neutral.800",
   height: "60px",
   position: "relative", // 追加: 相対位置指定
+  marginBottom: "20px", //headerと余白
 });
 
 export const ImageSize = css({

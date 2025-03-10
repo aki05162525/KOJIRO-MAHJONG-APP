@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Flex,
+  Grid,
   Heading,
   Input,
   Text,
@@ -108,7 +109,7 @@ export default function NewLeague() {
         </Box>
 
         {/* プレイヤー追加 */}
-        <Box mb={8}>
+        <Box mb={4}>
           <Input
             value={newPlayerName}
             placeholder="プレイヤー名を入力"
@@ -128,7 +129,7 @@ export default function NewLeague() {
         </Box>
 
         {/* プレイヤーリスト */}
-        <VStack align="stretch">
+        <Grid templateColumns="repeat(2, 1fr)" gap="3">
           {fields.map((player, index) => (
             <Flex
               key={player.id}
@@ -139,13 +140,13 @@ export default function NewLeague() {
               <Text>{player.name}</Text>
               <Button
                 onClick={() => remove(index)} // 削除機能を追加
-                size="sm" // todo　削除のCSSの修正、編集機能
+                size="sm"
               >
                 <Trash2 />
               </Button>
             </Flex>
           ))}
-        </VStack>
+        </Grid>
 
         {/* ボタン */}
         <Flex justifyContent="space-between" pt={4}>

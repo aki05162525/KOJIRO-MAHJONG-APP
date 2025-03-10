@@ -28,7 +28,12 @@ export default function NewLeague() {
   const [newPlayerName, setNewPlayerName] = useState("");
 
   // react-hook-formの設定
-  const { register, handleSubmit, control } = useForm<LeagueFormValues>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<LeagueFormValues>({
     defaultValues: {
       leagueName: "",
       players: [],
@@ -87,7 +92,19 @@ export default function NewLeague() {
       <form onSubmit={onSubmit}>
         {/* リーグ名入力 */}
         <Box mb={8}>
-          <Input placeholder="リーグ名を入力" {...register("leagueName")} />
+          <Input
+            placeholder="リーグ名を入力"
+            {...register("leagueName", {
+              required: "リーグ名を入力してください",
+            })}
+          />
+          {errors.leagueName?.message && (
+            <p className="error-message">
+              <Text color="red.500" fontWeight="bold">
+                {errors.leagueName?.message}
+              </Text>
+            </p>
+          )}
         </Box>
 
         {/* プレイヤー追加 */}

@@ -122,11 +122,16 @@ export default function NewLeague() {
               }
             }}
           />
-          <Button onClick={addPlayer} mt={2}>
+          {/* 16人より大きい場合は追加できない仕様 */}
+          <Button onClick={addPlayer} mt={2} disabled={fields.length >= 16}>
             <Plus />
             追加
           </Button>
         </Box>
+        {/* 参加プレイヤー数の表示 */}
+        <Text fontSize="md" fontWeight="bold" mb={2}>
+          参加プレイヤー　{fields.length}/16人
+        </Text>
 
         {/* プレイヤーリスト */}
         <Grid templateColumns="repeat(2, 1fr)" gap="3">

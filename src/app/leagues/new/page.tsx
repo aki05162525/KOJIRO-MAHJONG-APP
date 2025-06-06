@@ -13,6 +13,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { LeagueNewScreen } from "@/components/screens/leagues";
 
 // フォームの型定義
 interface LeagueFormValues {
@@ -85,85 +86,88 @@ export default function NewLeague() {
   });
 
   return (
-    <Box maxW="2xl" mx="auto" py={8} color="gray.900">
-      <Heading size="3xl" fontWeight="bold" textAlign="center" mb={4}>
-        リーグ登録
-      </Heading>
-      <form onSubmit={onSubmit}>
-        {/* リーグ名入力 */}
-        <Box mb={8}>
-          <Input
-            placeholder="リーグ名を入力"
-            {...register("leagueName", {
-              required: "リーグ名を入力してください",
-            })}
-          />
-          {errors.leagueName?.message && (
-            <p className="error-message">
-              <Text color="red.500" fontWeight="bold">
-                {errors.leagueName?.message}
-              </Text>
-            </p>
-          )}
-        </Box>
+    <div>
+      <LeagueNewScreen />
+      <Box maxW="2xl" mx="auto" py={8} color="gray.900">
+        <Heading size="3xl" fontWeight="bold" textAlign="center" mb={4}>
+          リーグ登録
+        </Heading>
+        <form onSubmit={onSubmit}>
+          {/* リーグ名入力 */}
+          <Box mb={8}>
+            <Input
+              placeholder="リーグ名を入力"
+              {...register("leagueName", {
+                required: "リーグ名を入力してください",
+              })}
+            />
+            {errors.leagueName?.message && (
+              <p className="error-message">
+                <Text color="red.500" fontWeight="bold">
+                  {errors.leagueName?.message}
+                </Text>
+              </p>
+            )}
+          </Box>
 
-        {/* プレイヤー追加 */}
-        <Box mb={4}>
-          <Input
-            value={newPlayerName}
-            placeholder="プレイヤー名を入力"
-            onChange={(e) => setNewPlayerName(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-                addPlayer();
-                setTimeout(() => setNewPlayerName(""), 0); // Enterを押したら入力欄が空白になるように設定
-              }
-            }}
-          />
-          {/* 8人より大きい場合は追加できない仕様 */}
-          <Button onClick={addPlayer} mt={2} disabled={fields.length >= 8}>
-            <Plus />
-            追加
-          </Button>
-        </Box>
-        {/* 参加プレイヤー数の表示 */}
-        <Text fontSize="md" fontWeight="bold" mb={2}>
-          参加プレイヤー　{fields.length}/8人
-        </Text>
+          {/* プレイヤー追加 */}
+          <Box mb={4}>
+            <Input
+              value={newPlayerName}
+              placeholder="プレイヤー名を入力"
+              onChange={(e) => setNewPlayerName(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  addPlayer();
+                  setTimeout(() => setNewPlayerName(""), 0); // Enterを押したら入力欄が空白になるように設定
+                }
+              }}
+            />
+            {/* 8人より大きい場合は追加できない仕様 */}
+            <Button onClick={addPlayer} mt={2} disabled={fields.length >= 8}>
+              <Plus />
+              追加
+            </Button>
+          </Box>
+          {/* 参加プレイヤー数の表示 */}
+          <Text fontSize="md" fontWeight="bold" mb={2}>
+            参加プレイヤー　{fields.length}/8人
+          </Text>
 
-        {/* プレイヤーリスト */}
-        <Grid templateColumns="repeat(2, 1fr)" gap="3">
-          {fields.map((player, index) => (
-            <Flex
-              key={player.id}
-              borderWidth={2}
-              align="center"
-              justify="space-between"
-            >
-              <Text>{player.name}</Text>
-              <Button
-                onClick={() => remove(index)} // 削除機能を追加
-                size="sm"
+          {/* プレイヤーリスト */}
+          <Grid templateColumns="repeat(2, 1fr)" gap="3">
+            {fields.map((player, index) => (
+              <Flex
+                key={player.id}
+                borderWidth={2}
+                align="center"
+                justify="space-between"
               >
-                <Trash2 />
-              </Button>
-            </Flex>
-          ))}
-        </Grid>
+                <Text>{player.name}</Text>
+                <Button
+                  onClick={() => remove(index)} // 削除機能を追加
+                  size="sm"
+                >
+                  <Trash2 />
+                </Button>
+              </Flex>
+            ))}
+          </Grid>
 
-        {/* ボタン */}
-        <Flex justifyContent="space-between" pt={4}>
-          <Button variant="outline" onClick={() => router.push("/")}>
-            <a href="../../">戻る</a>
-          </Button>
+          {/* ボタン */}
+          <Flex justifyContent="space-between" pt={4}>
+            <Button variant="outline" onClick={() => router.push("/")}>
+              <a href="../../">戻る</a>
+            </Button>
 
-          <Button type="submit">
-            {/* <a href="../../">登録する</a> */}
-            登録する
-          </Button>
-        </Flex>
-      </form>
-    </Box>
+            <Button type="submit">
+              {/* <a href="../../">登録する</a> */}
+              登録する
+            </Button>
+          </Flex>
+        </form>
+      </Box>
+    </div>
   );
 }

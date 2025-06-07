@@ -1,6 +1,6 @@
 import { Provider } from "@/components/ui/provider";
 import "./globals.css";
-import { Header } from "@/components/blocks/Header";
+import { Header } from "@/components/blocks/header";
 import { css } from "../../styled-system/css";
 
 //スマホサイズで開発

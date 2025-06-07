@@ -26,14 +26,17 @@ export const PlayerListInput = () => {
 
   return (
     <div>
-      {/* プレイヤー追加 */}
       <Box mb={4}>
         <Input
           value={newPlayerName}
           onChange={(e) => setNewPlayerName(e.target.value)}
           placeholder="プレイヤー名を入力"
         />
-        <Button mt={2} onClick={handleAddPlayer} disabled={!newPlayerName}>
+        <Button
+          mt={2}
+          onClick={handleAddPlayer}
+          disabled={!newPlayerName || fields.length >= 8}
+        >
           <Plus />
           追加
         </Button>

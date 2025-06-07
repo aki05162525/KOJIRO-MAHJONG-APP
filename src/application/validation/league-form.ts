@@ -6,7 +6,7 @@ export const validationLeagueFormSchema = z.object({
     .array(
       z.object({
         name: z.string().min(1, "プレイヤー名は必須です。"),
-      })
+      }),
     )
     .min(1, "プレイヤーを入力してください")
     .length(8, "プレイヤーは8人登録してください。")

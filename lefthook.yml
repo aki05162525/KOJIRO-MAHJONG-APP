@@ -1,11 +1,11 @@
 pre-commit:
   commands:
-    check:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: bunx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true <files> && git update-index --again
+    biome:
+      glob: "*.{js,ts,tsx,jsx}"
+      run: bunx biome check --apply {staged_files}
 
 pre-push:
   commands:
-    check:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: bunx biome check --no-errors-on-unmatched --files-ignore-unknown=true <files>
+    biome:
+      glob: "*.{js,ts,tsx,jsx}"
+      run: bunx biome check {all_files}

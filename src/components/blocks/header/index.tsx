@@ -3,10 +3,10 @@ import localImage from "../../../../public/logo.png";
 import { headerStyles, ImageSize, titleStyle } from "./styles";
 
 export const Header = () => {
-  return (
-    <header className={headerStyles}>
-      <Image src={localImage} alt="logo" className={ImageSize} />
-      <h1 className={titleStyle}>小次郎麻雀アプリ</h1>
-    </header>
-  );
+	return (
+		<header className={headerStyles}>
+			<Image src={localImage} alt="logo" className={ImageSize} />
+			<h1 className={titleStyle}>小次郎麻雀アプリ</h1>
+		</header>
+	);
 };

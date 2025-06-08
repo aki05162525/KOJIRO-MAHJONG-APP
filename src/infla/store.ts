@@ -1,15 +1,10 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-// 一時的なダミーslice
-const dummySlice = createSlice({
-	name: "dummy",
-	initialState: { value: 0 },
-	reducers: {},
-});
+import leaguesReducer from "./states/leagues/index";
 
 export const makeStore = () => {
 	return configureStore({
 		reducer: {
-			dummy: dummySlice.reducer,
+			leagues: leaguesReducer,
 		},
 	});
 };

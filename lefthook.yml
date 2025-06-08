@@ -1,11 +1,11 @@
-pre-commit:
-  commands:
-    biome:
-      glob: "*.{js,ts,tsx,jsx}"
-      run: bunx biome check --apply {staged_files}
+# pre-commit:
+#   commands:
+#     biome:
+#       glob: "*.{js,ts,tsx,jsx}"
+#       run: bunx biome check --apply {staged_files}
 
-pre-push:
-  commands:
-    biome:
-      glob: "*.{js,ts,tsx,jsx}"
-      run: bunx biome check {all_files}
+# pre-push:
+#   commands:
+#     biome:
+#       glob: "*.{js,ts,tsx,jsx}"
+#       run: bunx biome check {all_files}

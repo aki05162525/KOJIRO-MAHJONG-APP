@@ -1,3 +1,4 @@
 [tools]
 bun ="latest"
+lefthook = "latest"
 node = "22"

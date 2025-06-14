@@ -24,9 +24,10 @@ export const HomeScreen = () => {
         {loading === "succeeded" && leagues.length === 0 && (
           <Text color="gray.500">リーグがまだ登録されていません。</Text>
         )}
-        {leagues.map((league: League) => (
-          <LeagueCard key={league.id} league={league} />
-        ))}
+        {loading === "succeeded" &&
+          leagues.map((league: League) => (
+            <LeagueCard key={league.id} league={league} />
+          ))}
       </VStack>
     </div>
   );

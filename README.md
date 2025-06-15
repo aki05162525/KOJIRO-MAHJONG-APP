@@ -7,11 +7,17 @@
 
 ```shell
 mise install
+bun install
 ```
 
 ## Run locally
 
 ```shell
-bun install     # 依存インストール
 bun run dev
+```
+
+### Run with Mock server
+
+```shell
+bun run dev:mock
 ```

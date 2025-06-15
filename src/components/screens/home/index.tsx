@@ -1,34 +1,24 @@
 import { LeagueCard } from "@/components/blocks/league-card";
 import { LeagueListHeader } from "@/components/blocks/league-list-header";
-import MatchCard from "@/components/blocks/match-card";
 import type { League } from "@/domain/league";
-import { useAppDispatch, useAppSelector } from "@/hooks/app";
-import { leaguesSelector } from "@/infla/states/leagues/selector";
-import { fetchLeagues } from "@/usecases/leagues";
+import { useLeagues } from "@/usecases/leagues/useLeagues";
 import { Text, VStack } from "@chakra-ui/react";
-import { useEffect } from "react";
 
 export const HomeScreen = () => {
-  const dispatch = useAppDispatch();
-  const { leagues, loading } = useAppSelector(leaguesSelector);
+  const { leagues, isLoading } = useLeagues();
 
-  useEffect(() => {
-    if (loading === "idle") {
-      dispatch(fetchLeagues());
-    }
-  }, [dispatch, loading]);
+  if (isLoading) return <Text>読み込み中...</Text>;
 
   return (
     <div>
       <LeagueListHeader />
-      <VStack align="stretch" pt={4}>
-        {loading === "succeeded" && leagues.length === 0 && (
+      <VStack align="stretch" pt={10} spaceY={3}>
+        {leagues.length === 0 && (
           <Text color="gray.500">リーグがまだ登録されていません。</Text>
         )}
-        {loading === "succeeded" &&
-          leagues.map((league: League) => (
-            <LeagueCard key={league.id} league={league} />
-          ))}
+        {leagues.map((league: League) => (
+          <LeagueCard key={league.id} league={league} />
+        ))}
       </VStack>
     </div>
   );

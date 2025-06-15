@@ -4,10 +4,9 @@ import "./globals.css";
 import { Header } from "@/components/blocks/header";
 import type React from "react";
 import { css } from "../../styled-system/css";
-import StoreProvider from "./StoreProvider";
-import MSWProvider from "@/components/providers/MSWProvider";
+import MSWProvider from "@/infra/providers/MSWProvider";
 import { SWRConfig } from "swr";
-import { swrConfig } from "@/infla/swr/config";
+import { swrConfig } from "@/infra/swr/config";
 
 //スマホサイズで開発
 const layoutStyle = css({
@@ -24,18 +23,16 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       <body className={layoutStyle}>
         <MSWProvider>
           <SWRConfig value={swrConfig}>
-            <StoreProvider>
-              <ChakraProvider>
-                <Header />
-                <div
-                  className={css({
-                    padding: "6",
-                  })}
-                >
-                  {children}
-                </div>
-              </ChakraProvider>
-            </StoreProvider>
+            <ChakraProvider>
+              <Header />
+              <div
+                className={css({
+                  padding: "6",
+                })}
+              >
+                {children}
+              </div>
+            </ChakraProvider>
           </SWRConfig>
         </MSWProvider>
       </body>

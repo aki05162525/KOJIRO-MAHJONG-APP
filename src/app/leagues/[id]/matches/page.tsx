@@ -1,11 +1,14 @@
 "use client";
 
 import { MatchesScreen } from "@/components/screens/matches";
+import { use } from "react";
 
 export default function LeagueDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  return <MatchesScreen leagueId={params.id} />;
+  const { id } = use(params);
+
+  return <MatchesScreen leagueId={id} />;
 }

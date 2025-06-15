@@ -1,4 +1,5 @@
 import { setupWorker } from "msw/browser";
-import { handlers } from "../league/index";
+import { handlers as leagueHandlers } from "../league/index";
+import { handlers as matchHandlers } from "../match/index";
 
-export const worker = setupWorker(...handlers);
+export const worker = setupWorker(...leagueHandlers, ...matchHandlers);

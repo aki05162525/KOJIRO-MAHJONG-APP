@@ -9,14 +9,19 @@ interface LeagueCardProps {
 
 export const LeagueCard = ({ league, onClick }: LeagueCardProps) => {
   return (
-    <Link href={`/leagues/${league.id}`}>
+    <Link href={`/leagues/${league.id}/matches`}>
       <Box
         borderWidth={2}
         borderRadius="lg"
         p={4}
         borderColor="gray.300"
         cursor="pointer"
-        _hover={{ borderColor: "blue.300" }}
+        _hover={{
+          borderColor: "blue.400",
+          transform: "translateY(-2px)",
+          boxShadow: "md",
+        }}
+        transition="all 0.2s"
         onClick={() => onClick?.(league)}
       >
         <Heading as="h2" size="md">

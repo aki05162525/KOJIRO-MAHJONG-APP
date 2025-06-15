@@ -11,7 +11,8 @@ export default function MSWProvider({
 
   useEffect(() => {
     const initMSW = async () => {
-      if (process.env.NODE_ENV === "development") {
+      // 環境変数でモックの使用を制御
+      if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
         const { initMocks } = await import("@/mocks");
         await initMocks();
         setMswReady(true);

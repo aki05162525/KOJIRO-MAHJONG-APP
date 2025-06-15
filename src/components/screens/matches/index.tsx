@@ -1,7 +1,7 @@
 import { UnrecordedMatchCard } from "@/components/blocks/match-card/UnrecordedMatchCard";
 import { PageHeader } from "@/components/layouts/page-header";
 import { useMatches } from "@/usecases/matches/useMatches";
-import { VStack } from "@chakra-ui/react";
+import { Spinner, VStack } from "@chakra-ui/react";
 import type React from "react";
 
 interface MatchesScreenProps {
@@ -9,7 +9,14 @@ interface MatchesScreenProps {
 }
 
 export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
-  const { matches, leagueName } = useMatches(leagueId);
+  const { matches, leagueName, isLoading, isError } = useMatches(leagueId);
+
+  if (isLoading) {
+    return <Spinner size="xl" />;
+  } //todo 将来的に修正
+  if (isError) {
+    return <div>Error loading matches. Please try again later.</div>;
+  } // todo エラーハンドリングを将来的にまとめる！
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import {
   type LeagueFormValues,
   validationLeagueFormSchema,
-} from "@/application/validation/league-form";
+} from "@/domain/validation/league-form";
 import { LeagueNameInput } from "@/components/blocks/league-name-input";
 import { PlayerListInput } from "@/components/blocks/header/player-list-input";
 import { PageHeader } from "@/components/layouts/page-header";

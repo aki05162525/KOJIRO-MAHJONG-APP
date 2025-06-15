@@ -1,10 +1,12 @@
+"use client";
 import { Provider as ChakraProvider } from "@/components/ui/provider";
 import "./globals.css";
 import { Header } from "@/components/blocks/header";
 import type React from "react";
 import { css } from "../../styled-system/css";
-import StoreProvider from "./StoreProvider";
-import MSWProvider from "@/components/providers/MSWProvider";
+import MSWProvider from "@/infra/providers/MSWProvider";
+import { SWRConfig } from "swr";
+import { swrConfig } from "@/infra/swr/config";
 
 //スマホサイズで開発
 const layoutStyle = css({
@@ -20,7 +22,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
     <html lang="ja" suppressHydrationWarning>
       <body className={layoutStyle}>
         <MSWProvider>
-          <StoreProvider>
+          <SWRConfig value={swrConfig}>
             <ChakraProvider>
               <Header />
               <div
@@ -31,7 +33,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
                 {children}
               </div>
             </ChakraProvider>
-          </StoreProvider>
+          </SWRConfig>
         </MSWProvider>
       </body>
     </html>

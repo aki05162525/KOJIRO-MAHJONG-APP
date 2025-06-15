@@ -9,7 +9,7 @@ interface LeagueCardProps {
 
 export const LeagueCard = ({ league, onClick }: LeagueCardProps) => {
   return (
-    <Link href={`/leagues/${league.id}`}>
+    <Link href={`/leagues/${league.id}/matches`}>
       <Box
         borderWidth={2}
         borderRadius="lg"

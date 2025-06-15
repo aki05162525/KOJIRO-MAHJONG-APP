@@ -3,11 +3,11 @@
 import { MatchesScreen } from "@/components/screens/matches";
 import { use } from "react";
 
-export default function LeagueDetailPage({
-  params,
-}: {
+interface PageProps {
   params: Promise<{ id: string }>;
-}) {
+}
+
+export default function LeagueDetailPage({ params }: PageProps) {
   const { id } = use(params);
 
   return <MatchesScreen leagueId={id} />;

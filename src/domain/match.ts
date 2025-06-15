@@ -2,6 +2,7 @@ import type { League } from "./league";
 import type { Player } from "./player";
 
 export type MatchStatus = "recorded" | "not_recorded";
+export type RuleType = "INITIAL" | "UPPER" | "LOWER";
 
 export interface MatchPlayer {
   player: Player;
@@ -15,6 +16,7 @@ export interface Match {
   id: string;
   tableId: string;
   matchNumber: number;
+  ruleType: RuleType;
   league: League;
   status: MatchStatus;
   players: MatchPlayer[];

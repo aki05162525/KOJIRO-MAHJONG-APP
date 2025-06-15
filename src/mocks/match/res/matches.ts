@@ -1,3 +1,4 @@
+// src/mocks/match/res/matches.ts
 import type { Match } from "@/domain/match";
 
 export const matchesResponse: Record<string, Match[]> = {
@@ -7,6 +8,7 @@ export const matchesResponse: Record<string, Match[]> = {
       id: "match-001",
       tableId: "A",
       matchNumber: 1,
+      ruleType: "INITIAL",
       league: {
         id: "123",
         name: "第1回小次郎麻雀大会",
@@ -47,6 +49,7 @@ export const matchesResponse: Record<string, Match[]> = {
       id: "match-002",
       tableId: "B",
       matchNumber: 1,
+      ruleType: "INITIAL",
       league: {
         id: "123",
         name: "第1回小次郎麻雀大会",
@@ -71,13 +74,73 @@ export const matchesResponse: Record<string, Match[]> = {
         },
       ],
     },
+    // 2戦目（UPPER・LOWER）
+    {
+      id: "match-003",
+      tableId: "A",
+      matchNumber: 2,
+      ruleType: "UPPER",
+      league: {
+        id: "123",
+        name: "第1回小次郎麻雀大会",
+      },
+      status: "not_recorded",
+      players: [
+        {
+          player: { id: "player-001", name: "りゅうと" },
+          seat: 0,
+        },
+        {
+          player: { id: "player-003", name: "りゅうじろう" },
+          seat: 1,
+        },
+        {
+          player: { id: "player-005", name: "こうき" },
+          seat: 2,
+        },
+        {
+          player: { id: "player-007", name: "わかもり" },
+          seat: 3,
+        },
+      ],
+    },
+    {
+      id: "match-004",
+      tableId: "B",
+      matchNumber: 2,
+      ruleType: "LOWER",
+      league: {
+        id: "123",
+        name: "第1回小次郎麻雀大会",
+      },
+      status: "not_recorded",
+      players: [
+        {
+          player: { id: "player-002", name: "なるみ" },
+          seat: 0,
+        },
+        {
+          player: { id: "player-004", name: "あきひろ" },
+          seat: 1,
+        },
+        {
+          player: { id: "player-006", name: "こうた" },
+          seat: 2,
+        },
+        {
+          player: { id: "player-008", name: "ささめ" },
+          seat: 3,
+        },
+      ],
+    },
   ],
   // リーグID "456" のマッチデータ
   "456": [
     {
-      id: "match-003",
+      id: "match-005",
       tableId: "A",
       matchNumber: 1,
+      ruleType: "INITIAL",
       league: {
         id: "456",
         name: "第2回小次郎麻雀大会",
@@ -98,6 +161,35 @@ export const matchesResponse: Record<string, Match[]> = {
         },
         {
           player: { id: "player-012", name: "しろう" },
+          seat: 3,
+        },
+      ],
+    },
+    {
+      id: "match-006",
+      tableId: "B",
+      matchNumber: 1,
+      ruleType: "INITIAL",
+      league: {
+        id: "456",
+        name: "第2回小次郎麻雀大会",
+      },
+      status: "not_recorded",
+      players: [
+        {
+          player: { id: "player-013", name: "ごろう" },
+          seat: 0,
+        },
+        {
+          player: { id: "player-014", name: "ろくろう" },
+          seat: 1,
+        },
+        {
+          player: { id: "player-015", name: "ななろう" },
+          seat: 2,
+        },
+        {
+          player: { id: "player-016", name: "はちろう" },
           seat: 3,
         },
       ],

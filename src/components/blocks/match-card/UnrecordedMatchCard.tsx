@@ -2,14 +2,14 @@ import { Box, Text, SimpleGrid, VStack, Flex } from "@chakra-ui/react";
 import { CirclePlay } from "lucide-react";
 import type React from "react";
 
-interface MatchCardProps {
-  ruleName: string; // "初期卓A"
+interface UnrecordedMatchCardProps {
+  displayName: string; // "初期卓A"
   players: string[]; // 例: ["りゅうと", "なるみ", "りゅうじろう", "あきひろ"]
   onClick?: () => void; // カードクリック時のハンドラー
 }
 
-export const MatchCard: React.FC<MatchCardProps> = ({
-  ruleName,
+export const UnrecordedMatchCard: React.FC<UnrecordedMatchCardProps> = ({
+  displayName,
   players,
   onClick,
 }) => {
@@ -31,7 +31,7 @@ export const MatchCard: React.FC<MatchCardProps> = ({
       {/* タイトルと記録表示 */}
       <Flex justify="space-between" align="center" mb={6}>
         <Text fontSize="xl" fontWeight="bold" color="gray.800">
-          {ruleName}
+          {displayName}
         </Text>
         <Flex align="center" gap={2}>
           <CirclePlay size={20} />

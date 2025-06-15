@@ -1,5 +1,6 @@
 import type { Match } from "@/domain/match";
 import { fetcher } from "@/infra/api/client";
+import { getMatchListPresentation } from "@/presenters/matches";
 import useSWR from "swr";
 
 export const useMatches = (leagueId: string) => {
@@ -8,8 +9,10 @@ export const useMatches = (leagueId: string) => {
     fetcher
   );
 
+  const matches = data ? getMatchListPresentation(data) : [];
+
   return {
-    matches: data || [],
+    matches,
     isLoading,
     isError: error,
   };

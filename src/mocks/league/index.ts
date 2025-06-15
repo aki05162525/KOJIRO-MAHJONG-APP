@@ -1,16 +1,12 @@
-import { http, HttpResponse, type RequestHandler } from "msw";
+import { delay, http, HttpResponse, type RequestHandler } from "msw";
+import { leaguesResponse } from "./res/leagues";
 
-const leaguesHandler = http.get("/api/leagues", () => {
-  return HttpResponse.json([
-    {
-      id: "123",
-      name: "第1回小次郎麻雀大会",
-    },
-    {
-      id: "456",
-      name: "第2回小次郎麻雀大会",
-    },
-  ]);
-});
+const handlers: RequestHandler[] = [
+  //リーグ一覧取得
+  http.get("api/leagues", async () => {
+    await delay();
+    return HttpResponse.json(leaguesResponse);
+  }),
+];
 
-export const handlers: RequestHandler[] = [leaguesHandler];
+export { handlers };

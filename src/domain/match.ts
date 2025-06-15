@@ -17,7 +17,6 @@ export interface Match {
   tableId: string;
   matchNumber: number;
   ruleType: RuleType;
-  league: League;
   status: MatchStatus;
   players: MatchPlayer[];
 }

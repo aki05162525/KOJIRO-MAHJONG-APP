@@ -16,7 +16,12 @@ export const LeagueCard = ({ league, onClick }: LeagueCardProps) => {
         p={4}
         borderColor="gray.300"
         cursor="pointer"
-        _hover={{ borderColor: "blue.300" }}
+        _hover={{
+          borderColor: "blue.400",
+          transform: "translateY(-2px)",
+          boxShadow: "md",
+        }}
+        transition="all 0.2s"
         onClick={() => onClick?.(league)}
       >
         <Heading as="h2" size="md">

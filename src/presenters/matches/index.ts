@@ -16,7 +16,6 @@ const getRuleTypeName = (ruleType: RuleType): string => {
 export const getMatchPresentation = (match: Match) => {
   return {
     id: match.id,
-    leagueName: match.league.name,
     displayName: `${getRuleTypeName(match.ruleType)}${match.tableId}`,
     playerNames: match.players.map((p) => p.player.name),
     status: match.status,

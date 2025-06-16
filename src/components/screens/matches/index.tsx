@@ -1,3 +1,4 @@
+import { RecordedMatchCardTest } from "@/components/blocks/match-card/RecordedMatchCard";
 import { UnrecordedMatchCard } from "@/components/blocks/match-card/UnrecordedMatchCard";
 import { PageHeader } from "@/components/layouts/page-header";
 import { useMatches } from "@/usecases/matches/useMatches";
@@ -13,14 +14,13 @@ export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
 
   if (isLoading) {
     return <Spinner size="xl" />;
-  } //todo 将来的に修正
+  } //TODO 将来的に修正
   if (isError) {
     return <div>Error loading matches. Please try again later.</div>;
-  } // todo エラーハンドリングを将来的にまとめる！
+  } //TODO エラーハンドリングを将来的にまとめる！
 
   return (
     <div>
-      {/* todo リーグ名を挿入 */}
       <PageHeader title={leagueName} />
       <VStack align="stretch" pt={4} spaceY={4}>
         {matches.map((match) => (
@@ -30,6 +30,7 @@ export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
             players={match.playerNames}
           />
         ))}
+        <RecordedMatchCardTest />
       </VStack>
     </div>
   );

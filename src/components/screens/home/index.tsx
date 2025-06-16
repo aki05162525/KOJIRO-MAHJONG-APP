@@ -20,7 +20,6 @@ export const HomeScreen = () => {
         {leagues.map((league: League) => (
           <LeagueCard key={league.id} league={league} />
         ))}
-        <RecordedMatchCardTest />
       </VStack>
     </div>
   );

@@ -3,6 +3,7 @@ import { UnrecordedMatchCard } from "@/components/blocks/match-card/UnrecordedMa
 import { PageHeader } from "@/components/layouts/page-header";
 import { useMatches } from "@/usecases/matches/useMatches";
 import { Spinner, VStack, Box, Text } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import type React from "react";
 import { useState } from "react";
 
@@ -11,6 +12,8 @@ interface MatchesScreenProps {
 }
 
 export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
+  const router = useRouter();
+
   const [selectedMatchNumber, setSelectedMatchNumber] = useState<
     number | undefined
   >(undefined);
@@ -23,6 +26,10 @@ export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
     latestMatchNumber,
     hasMatches,
   } = useMatches(leagueId, selectedMatchNumber);
+
+  const handleRecordMatch = (matchId: string) => {
+    router.push(`/leagues/${leagueId}/matches/${matchId}/record`);
+  };
 
   if (isLoading) {
     return <Spinner size="xl" />;
@@ -91,9 +98,7 @@ export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
                 key={match.id}
                 displayName={match.displayName}
                 players={match.playerNames}
-                onClick={() => {
-                  console.log(`Record match ${match.id}`);
-                }}
+                onClick={() => handleRecordMatch(match.id)}
               />
             )
           )

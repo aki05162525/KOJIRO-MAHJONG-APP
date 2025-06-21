@@ -51,14 +51,14 @@ export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
       <Box mb={4}>
         <select
           value={selectedMatchNumber ?? latestMatchNumber}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-            setSelectedMatchNumber(Number(e.target.value))
-          }
+          onChange={(e) => setSelectedMatchNumber(Number(e.target.value))}
           style={{
             width: "200px",
             padding: "8px",
             borderRadius: "4px",
-            border: "1px solid #ccc",
+            border: "1px solid #E2E8F0",
+            backgroundColor: "white",
+            fontSize: "16px",
           }}
         >
           {availableMatchNumbers.map((matchNumber) => (

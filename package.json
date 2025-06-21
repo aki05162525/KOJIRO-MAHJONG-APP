@@ -8,7 +8,9 @@
     "dev:mock": "NEXT_PUBLIC_USE_MOCK=true next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.8.1",
@@ -31,9 +33,11 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@pandacss/dev": "^0.53.0",
+    "@storybook/nextjs": "^9.0.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "storybook": "^9.0.12",
     "typescript": "^5"
   },
   "msw": {

@@ -6,7 +6,7 @@ export type RuleType = "INITIAL" | "UPPER" | "LOWER";
 
 export interface MatchPlayer {
   player: Player;
-  seat: 0 | 1 | 2 | 3; // 東南西北
+  seat?: 0 | 1 | 2 | 3; // 東南西北（記録済みの場合のみ）
   score?: number; // 記録済みの場合のみ
   rank?: number; // 記録済みの場合のみ
   point?: number; // 記録済みの場合のみ

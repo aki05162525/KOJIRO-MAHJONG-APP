@@ -37,7 +37,7 @@ const convertToRecordedPlayerPresentation = (
   name: matchPlayer.player.name,
   point: matchPlayer.point ?? 0,
   rank: matchPlayer.rank ?? 0,
-  seat: matchPlayer.seat,
+  seat: matchPlayer.seat ?? 0,
 });
 
 export const getMatchPresentation = (match: Match): MatchPresentation => {

@@ -61,19 +61,15 @@ export const matchesResponse: Record<string, MatchesResponse> = {
         players: [
           {
             player: { id: "player-005", name: "こうき" },
-            seat: 0,
           },
           {
             player: { id: "player-006", name: "こうた" },
-            seat: 1,
           },
           {
             player: { id: "player-007", name: "わかもり" },
-            seat: 2,
           },
           {
             player: { id: "player-008", name: "ささめ" },
-            seat: 3,
           },
         ],
       },

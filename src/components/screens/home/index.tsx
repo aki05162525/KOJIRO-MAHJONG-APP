@@ -1,6 +1,5 @@
 import { LeagueCard } from "@/components/blocks/league-card";
 import { LeagueListHeader } from "@/components/blocks/league-list-header";
-import { RecordedMatchCardTest } from "@/components/blocks/match-card/RecordedMatchCard";
 import type { League } from "@/domain/league";
 import { useLeagues } from "@/usecases/leagues/useLeagues";
 import { Text, VStack } from "@chakra-ui/react";

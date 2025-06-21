@@ -1,4 +1,4 @@
-import { Box, Text, SimpleGrid, VStack, Flex } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { CirclePlay } from "lucide-react";
 import type React from "react";
 
@@ -39,12 +39,12 @@ export const UnrecordedMatchCard: React.FC<UnrecordedMatchCardProps> = ({
             記録する
           </Text>
         </Flex>
-      </Flex>
-      {/* プレイヤーグリッド */}
+      </Flex>{" "}
+      {/* プレイヤーグリッド */}{" "}
       <SimpleGrid columns={2} gap="15px">
-        {players.slice(0, 4).map((player, index) => (
+        {players.slice(0, 4).map((player, _index) => (
           <VStack
-            key={`${player}-${index}`}
+            key={player}
             bg="gray.200"
             borderRadius="xl"
             p={4}

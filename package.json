@@ -1,48 +1,46 @@
 {
-  "name": "kojiro-mahjong-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "prepare": "panda codegen",
-    "dev": "next dev",
-    "dev:mock": "NEXT_PUBLIC_USE_MOCK=true next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "dependencies": {
-    "@chakra-ui/react": "^3.8.1",
-    "@emotion/react": "^11.14.0",
-    "@hookform/resolvers": "^5.0.1",
-    "@reduxjs/toolkit": "^2.8.2",
-    "lefthook": "^1.11.13",
-    "lucide-react": "^0.477.0",
-    "msw": "^2.10.2",
-    "next": "15.2.0",
-    "next-themes": "^0.4.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-hook-form": "^7.54.2",
-    "react-icons": "^5.5.0",
-    "react-redux": "^9.2.0",
-    "swr": "^2.3.3",
-    "zod": "^3.25.56"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@pandacss/dev": "^0.53.0",
-    "@storybook/nextjs": "^9.0.12",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "storybook": "^9.0.12",
-    "typescript": "^5"
-  },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
-  }
+	"name": "kojiro-mahjong-app",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"prepare": "panda codegen",
+		"dev": "next dev",
+		"dev:mock": "NEXT_PUBLIC_USE_MOCK=true next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
+	},
+	"dependencies": {
+		"@chakra-ui/react": "^3.8.1",
+		"@emotion/react": "^11.14.0",
+		"@hookform/resolvers": "^5.0.1",
+		"@reduxjs/toolkit": "^2.8.2",
+		"lefthook": "^1.11.13",
+		"lucide-react": "^0.477.0",
+		"msw": "^2.10.2",
+		"next": "15.2.0",
+		"next-themes": "^0.4.4",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-hook-form": "^7.54.2",
+		"react-icons": "^5.5.0",
+		"react-redux": "^9.2.0",
+		"swr": "^2.3.3",
+		"zod": "^3.25.56"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@pandacss/dev": "^0.53.0",
+		"@storybook/nextjs": "^9.0.12",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"storybook": "^9.0.12",
+		"typescript": "^5"
+	},
+	"msw": {
+		"workerDirectory": ["public"]
+	}
 }

@@ -30,7 +30,6 @@ export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
             players={match.playerNames}
           />
         ))}
-        <RecordedMatchCardTest />
       </VStack>
     </div>
   );

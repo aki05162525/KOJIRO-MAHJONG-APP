@@ -80,7 +80,6 @@ export const RecordedMatchCard: React.FC<RecordedMatchCardProps> = ({
             borderRadius="xl"
             p={4}
             justify="center"
-            spacing={1}
           >
             <Flex align="center" gap={1}>
               {getRankIcon(player.rank)}

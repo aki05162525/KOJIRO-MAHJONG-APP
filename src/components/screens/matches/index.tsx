@@ -1,3 +1,4 @@
+import { RecordedMatchCard } from "@/components/blocks/match-card/RecordedMatchCard";
 import { UnrecordedMatchCard } from "@/components/blocks/match-card/UnrecordedMatchCard";
 import { PageHeader } from "@/components/layouts/page-header";
 import { useMatches } from "@/usecases/matches/useMatches";
@@ -13,23 +14,36 @@ export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
 
   if (isLoading) {
     return <Spinner size="xl" />;
-  } //todo 将来的に修正
+  } //TODO 将来的に修正
   if (isError) {
     return <div>Error loading matches. Please try again later.</div>;
-  } // todo エラーハンドリングを将来的にまとめる！
+  } //TODO エラーハンドリングを将来的にまとめる！
 
   return (
     <div>
-      {/* todo リーグ名を挿入 */}
       <PageHeader title={leagueName} />
       <VStack align="stretch" pt={4} spaceY={4}>
-        {matches.map((match) => (
-          <UnrecordedMatchCard
-            key={match.id}
-            displayName={match.displayName}
-            players={match.playerNames}
-          />
-        ))}
+        {matches.map((match) =>
+          match.status === "recorded" && match.recordedPlayers ? (
+            <RecordedMatchCard
+              key={match.id}
+              displayName={match.displayName}
+              players={match.recordedPlayers}
+              onClick={() => {
+                console.log(`Match ${match.id} details`);
+              }}
+            />
+          ) : (
+            <UnrecordedMatchCard
+              key={match.id}
+              displayName={match.displayName}
+              players={match.playerNames}
+              onClick={() => {
+                console.log(`Record match ${match.id}`);
+              }}
+            />
+          )
+        )}
       </VStack>
     </div>
   );

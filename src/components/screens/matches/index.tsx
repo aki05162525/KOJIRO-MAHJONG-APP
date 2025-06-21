@@ -1,4 +1,4 @@
-import { RecordedMatchCardTest } from "@/components/blocks/match-card/RecordedMatchCard";
+import { RecordedMatchCard } from "@/components/blocks/match-card/RecordedMatchCard";
 import { UnrecordedMatchCard } from "@/components/blocks/match-card/UnrecordedMatchCard";
 import { PageHeader } from "@/components/layouts/page-header";
 import { useMatches } from "@/usecases/matches/useMatches";
@@ -23,13 +23,27 @@ export const MatchesScreen: React.FC<MatchesScreenProps> = ({ leagueId }) => {
     <div>
       <PageHeader title={leagueName} />
       <VStack align="stretch" pt={4} spaceY={4}>
-        {matches.map((match) => (
-          <UnrecordedMatchCard
-            key={match.id}
-            displayName={match.displayName}
-            players={match.playerNames}
-          />
-        ))}
+        {matches.map((match) =>
+          match.status === "recorded" && match.recordedPlayers ? (
+            <RecordedMatchCard
+              key={match.id}
+              displayName={match.displayName}
+              players={match.recordedPlayers}
+              onClick={() => {
+                console.log(`Match ${match.id} details`);
+              }}
+            />
+          ) : (
+            <UnrecordedMatchCard
+              key={match.id}
+              displayName={match.displayName}
+              players={match.playerNames}
+              onClick={() => {
+                console.log(`Record match ${match.id}`);
+              }}
+            />
+          )
+        )}
       </VStack>
     </div>
   );

@@ -1,16 +1,12 @@
 import { Box, Text, SimpleGrid, VStack, Flex } from "@chakra-ui/react";
 import { ArrowUp, ArrowDown, Eye } from "lucide-react";
 import type React from "react";
+import type { RecordedMatchPlayerPresentation } from "@/presenters/matches";
 
 interface RecordedMatchCardProps {
-  displayName: string; // "初期卓A"
-  players: {
-    name: string;
-    point: number;
-    rank: number;
-    seat: number;
-  }[];
-  onClick?: () => void; // カードクリック時のハンドラー
+  displayName: string;
+  players: RecordedMatchPlayerPresentation[];
+  onClick?: () => void;
 }
 
 export const RecordedMatchCard: React.FC<RecordedMatchCardProps> = ({
@@ -19,18 +15,13 @@ export const RecordedMatchCard: React.FC<RecordedMatchCardProps> = ({
   onClick,
 }) => {
   const getWindDirection = (seat: number) => {
-    switch (seat) {
-      case 0:
-        return "東家";
-      case 1:
-        return "南家";
-      case 2:
-        return "西家";
-      case 3:
-        return "北家";
-      default:
-        return "";
-    }
+    const windMap = {
+      0: "東家",
+      1: "南家",
+      2: "西家",
+      3: "北家",
+    } as const;
+    return windMap[seat as keyof typeof windMap] || "";
   };
 
   const getRankIcon = (rank: number) => {
@@ -59,7 +50,6 @@ export const RecordedMatchCard: React.FC<RecordedMatchCardProps> = ({
       }}
       transition="all 0.2s"
     >
-      {/* タイトルと詳細表示 */}
       <Flex justify="space-between" align="center" mb={6}>
         <Text fontSize="xl" fontWeight="bold" color="gray.800">
           {displayName}
@@ -71,7 +61,6 @@ export const RecordedMatchCard: React.FC<RecordedMatchCardProps> = ({
           </Text>
         </Flex>
       </Flex>
-      {/* プレイヤーグリッド */}
       <SimpleGrid columns={2} gap="15px">
         {sortedPlayers.slice(0, 4).map((player, index) => (
           <VStack

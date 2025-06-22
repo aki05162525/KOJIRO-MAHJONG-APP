@@ -1,10 +1,10 @@
+import { PlayerListInput } from "@/components/blocks/header/player-list-input";
+import { LeagueNameInput } from "@/components/blocks/league-name-input";
+import { PageHeader } from "@/components/layouts/page-header";
 import {
   type LeagueFormValues,
   validationLeagueFormSchema,
 } from "@/domain/validation/league-form";
-import { LeagueNameInput } from "@/components/blocks/league-name-input";
-import { PlayerListInput } from "@/components/blocks/header/player-list-input";
-import { PageHeader } from "@/components/layouts/page-header";
 import { Box, Button, HStack } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";

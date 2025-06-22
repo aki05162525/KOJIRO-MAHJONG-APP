@@ -1,6 +1,5 @@
+import { Provider as ChakraProvider } from "../src/components/ui/provider";
 import type { Preview } from "@storybook/react";
-import { Provider as ChakraProvider } from "@/components/ui/provider";
-
 const preview: Preview = {
   parameters: {
     controls: {
